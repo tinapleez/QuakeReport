@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public final class QueryUtils {
 
+
     /**
      * Sample JSON response for a USGS query
      */
@@ -21,7 +22,7 @@ public final class QueryUtils {
             ".gov/fdsnws/event/1/query?format=geojson&starttime=2016-01-01&endtime=2016-01-31" +
             "&minmag=6&limit=10\",\"title\":\"USGS Earthquakes\",\"status\":200," +
             "\"api\":\"1.5.2\",\"limit\":10,\"offset\":1,\"count\":10}," +
-            "\"features\":[{\"type\":\"Feature\",\"properties\":{\"mag\":7.2,\"place\":\"88km N " +
+            "\"features\":[{\"type\":\"Feature\",\"properties\":{\"mag\":0.2,\"place\":\"88km N " +
             "of Yelizovo, Russia\",\"time\":1454124312220,\"updated\":1460674294040,\"tz\":720," +
             "\"url\":\"http://earthquake.usgs.gov/earthquakes/eventpage/us20004vvx\"," +
             "\"detail\":\"http://earthquake.usgs" +
@@ -35,7 +36,7 @@ public final class QueryUtils {
             "\"type\":\"earthquake\",\"title\":\"M 7.2 - 88km N of Yelizovo, Russia\"}," +
             "\"geometry\":{\"type\":\"Point\",\"coordinates\":[158.5463,53.9776,177]}," +
             "\"id\":\"us20004vvx\"},\n" +
-            "{\"type\":\"Feature\",\"properties\":{\"mag\":6.1,\"place\":\"94km SSE of Taron, " +
+            "{\"type\":\"Feature\",\"properties\":{\"mag\":1.1,\"place\":\"94km SSE of Taron, " +
             "Papua New Guinea\",\"time\":1453777820750,\"updated\":1460156775040,\"tz\":600," +
             "\"url\":\"http://earthquake.usgs.gov/earthquakes/eventpage/us20004uks\"," +
             "\"detail\":\"http://earthquake.usgs" +
@@ -48,7 +49,7 @@ public final class QueryUtils {
             "\"type\":\"earthquake\",\"title\":\"M 6.1 - 94km SSE of Taron, Papua New Guinea\"}," +
             "\"geometry\":{\"type\":\"Point\",\"coordinates\":[153.2454,-5.2952,26]}," +
             "\"id\":\"us20004uks\"},\n" +
-            "{\"type\":\"Feature\",\"properties\":{\"mag\":6.3,\"place\":\"50km NNE of Al " +
+            "{\"type\":\"Feature\",\"properties\":{\"mag\":2.3,\"place\":\"50km NNE of Al " +
             "Hoceima, Morocco\",\"time\":1453695722730,\"updated\":1460156773040,\"tz\":0," +
             "\"url\":\"http://earthquake.usgs.gov/earthquakes/eventpage/us10004gy9\"," +
             "\"detail\":\"http://earthquake.usgs" +
@@ -61,7 +62,7 @@ public final class QueryUtils {
             "\"magType\":\"mww\",\"type\":\"earthquake\",\"title\":\"M 6.3 - 50km NNE of Al " +
             "Hoceima, Morocco\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-3.6818," +
             "35.6493,12]},\"id\":\"us10004gy9\"},\n" +
-            "{\"type\":\"Feature\",\"properties\":{\"mag\":7.1,\"place\":\"86km E of Old Iliamna," +
+            "{\"type\":\"Feature\",\"properties\":{\"mag\":3.1,\"place\":\"86km E of Old Iliamna," +
             " Alaska\",\"time\":1453631430230,\"updated\":1460156770040,\"tz\":-540," +
             "\"url\":\"http://earthquake.usgs.gov/earthquakes/eventpage/us10004gqp\"," +
             "\"detail\":\"http://earthquake.usgs" +
@@ -75,7 +76,7 @@ public final class QueryUtils {
             "\"magType\":\"mww\",\"type\":\"earthquake\",\"title\":\"M 7.1 - 86km E of Old " +
             "Iliamna, Alaska\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-153.4051," +
             "59.6363,129]},\"id\":\"us10004gqp\"},\n" +
-            "{\"type\":\"Feature\",\"properties\":{\"mag\":6.6,\"place\":\"215km SW of Tomatlan, " +
+            "{\"type\":\"Feature\",\"properties\":{\"mag\":4.6,\"place\":\"215km SW of Tomatlan, " +
             "Mexico\",\"time\":1453399617650,\"updated\":1459963829040,\"tz\":-420," +
             "\"url\":\"http://earthquake.usgs.gov/earthquakes/eventpage/us10004g4l\"," +
             "\"detail\":\"http://earthquake.usgs" +
@@ -88,7 +89,7 @@ public final class QueryUtils {
             "\"gap\":74,\"magType\":\"mww\",\"type\":\"earthquake\",\"title\":\"M 6.6 - 215km SW " +
             "of Tomatlan, Mexico\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-106.9337," +
             "18.8239,10]},\"id\":\"us10004g4l\"},\n" +
-            "{\"type\":\"Feature\",\"properties\":{\"mag\":6.7,\"place\":\"52km SE of Shizunai, " +
+            "{\"type\":\"Feature\",\"properties\":{\"mag\":5.7,\"place\":\"52km SE of Shizunai, " +
             "Japan\",\"time\":1452741933640,\"updated\":1459304879040,\"tz\":540," +
             "\"url\":\"http://earthquake.usgs.gov/earthquakes/eventpage/us10004ebx\"," +
             "\"detail\":\"http://earthquake.usgs" +
@@ -114,7 +115,7 @@ public final class QueryUtils {
             "\"magType\":\"mww\",\"type\":\"earthquake\",\"title\":\"M 6.1 - 12km WNW of " +
             "Charagua, Bolivia\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-63.3288," +
             "-19.7597,582.56]},\"id\":\"us10004ebw\"},\n" +
-            "{\"type\":\"Feature\",\"properties\":{\"mag\":6.2,\"place\":\"74km NW of Rumoi, " +
+            "{\"type\":\"Feature\",\"properties\":{\"mag\":7.2,\"place\":\"74km NW of Rumoi, " +
             "Japan\",\"time\":1452532083920,\"updated\":1459304875040,\"tz\":540," +
             "\"url\":\"http://earthquake.usgs.gov/earthquakes/eventpage/us10004djn\"," +
             "\"detail\":\"http://earthquake.usgs" +
@@ -127,7 +128,7 @@ public final class QueryUtils {
             "\"magType\":\"mww\",\"type\":\"earthquake\",\"title\":\"M 6.2 - 74km NW of Rumoi, " +
             "Japan\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[141.0867,44.4761," +
             "238.81]},\"id\":\"us10004djn\"},\n" +
-            "{\"type\":\"Feature\",\"properties\":{\"mag\":6.5,\"place\":\"227km SE of Sarangani," +
+            "{\"type\":\"Feature\",\"properties\":{\"mag\":8.5,\"place\":\"227km SE of Sarangani," +
             " Philippines\",\"time\":1452530285900,\"updated\":1459304874040,\"tz\":480," +
             "\"url\":\"http://earthquake.usgs.gov/earthquakes/eventpage/us10004dj5\"," +
             "\"detail\":\"http://earthquake.usgs" +
@@ -140,7 +141,7 @@ public final class QueryUtils {
             "\"gap\":22,\"magType\":\"mww\",\"type\":\"earthquake\",\"title\":\"M 6.5 - 227km SE " +
             "of Sarangani, Philippines\"},\"geometry\":{\"type\":\"Point\"," +
             "\"coordinates\":[126.8621,3.8965,13]},\"id\":\"us10004dj5\"},\n" +
-            "{\"type\":\"Feature\",\"properties\":{\"mag\":6,\"place\":\"Pacific-Antarctic " +
+            "{\"type\":\"Feature\",\"properties\":{\"mag\":9,\"place\":\"Pacific-Antarctic " +
             "Ridge\",\"time\":1451986454620,\"updated\":1459202978040,\"tz\":-540," +
             "\"url\":\"http://earthquake.usgs.gov/earthquakes/eventpage/us10004bgk\"," +
             "\"detail\":\"http://earthquake.usgs" +
