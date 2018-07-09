@@ -9,6 +9,7 @@ public class Earthquake {
     private double mMagnitude;
     private String mLocation;
     private long mTimeInMilliseconds;
+    private String mUrl;
 
     /**
      * Constructs a new com.example.android.quakereport.Earthquake object
@@ -17,10 +18,11 @@ public class Earthquake {
      * @param location             is the earthquake location
      * @param timeInMilliseconds;e is the earthquake date and time in Unix time
      */
-    public Earthquake(double magnitude, String location, long timeInMilliseconds) {
+    public Earthquake(double magnitude, String location, long timeInMilliseconds, String url) {
         mMagnitude = magnitude;
         mLocation = location;
         mTimeInMilliseconds = timeInMilliseconds;
+        mUrl = url;
     }
 
     /**
@@ -42,5 +44,12 @@ public class Earthquake {
      */
     public long getTimeInMilliseconds() {
         return mTimeInMilliseconds;
+    }
+
+    /**
+     * Returns the website URL to find more information about the earthquake.
+     */
+    public String getUrl() {
+        return mUrl;
     }
 }

@@ -193,14 +193,16 @@ public final class QueryUtils {
                 // is an object
                 JSONObject properties = currentEarthquake.getJSONObject("properties");
 
-                // Inside of the "properties" tree, get the values for magnitude, location, and time
+                // Inside of the "properties" tree, get the values for magnitude, location,
+                // time, and url
                 double magnitude = properties.getDouble("mag");
                 String location = properties.getString("place");
                 long time = properties.getLong("time");
+                String url = properties.getString("url");
 
                 // Create/Fill Earthquake array with received data from above getter methods to
                 // make a list of earthquakes
-                Earthquake earthquake = new Earthquake(magnitude, location, time);
+                Earthquake earthquake = new Earthquake(magnitude, location, time, url);
                 earthquakes.add(earthquake);
             }
 
