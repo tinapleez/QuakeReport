@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public final class QueryUtils {
 
-
     /**
      * Sample JSON response for a USGS query
      */
