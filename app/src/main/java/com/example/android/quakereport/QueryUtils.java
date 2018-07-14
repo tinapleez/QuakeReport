@@ -1,5 +1,6 @@
 package com.example.android.quakereport;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -15,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Helper methods related to requesting and receiving earthquake data from USGS.
@@ -174,45 +176,61 @@ public final class QueryUtils {
      * Return a list of {@link Earthquake} objects that has been built up from
      * parsing a JSON response.
      */
-    public static ArrayList<Earthquake> extractEarthquakes() {
+    /**
+     * Return a list of {@link Earthquake} objects that has been built up from
+     * parsing the given JSON response.
+     */
+    private static List<Earthquake> extractFeatureFromJson(String earthquakeJSON) {
+        // If the JSON string is empty or null, then return early.
+        if (TextUtils.isEmpty(earthquakeJSON)) {
+            return null;
+        }
 
         // Create an empty ArrayList that we can start adding earthquakes to
-        ArrayList<Earthquake> earthquakes = new ArrayList<>();
+        List<Earthquake> earthquakes = new ArrayList<>();
 
-        // Try to parse the SAMPLE_JSON_RESPONSE. If there's a problem with the way the JSON
+        // Try to parse the JSON response string. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
 
-            // Parse the response given by the SAMPLE_JSON_RESPONSE string and
-            // build up a list of Earthquake objects with the corresponding data.
+            // Create a JSONObject from the JSON response string
+            JSONObject baseJsonResponse = new JSONObject(earthquakeJSON);
 
-            // Assign JSON string to JSONObject variable
-            JSONObject baseJSONResponse = new JSONObject(SAMPLE_JSON_RESPONSE);
+            // Extract the JSONArray associated with the key called "features",
+            // which represents a list of features (or earthquakes).
+            JSONArray earthquakeArray = baseJsonResponse.getJSONArray("features");
 
-            // Inside the JSONObject (root), get value for KEY "features", which is an array
-            JSONArray earthquakeArray = baseJSONResponse.getJSONArray("features");
-
-            // Loop through the earthquake array to pull values
+            // For each earthquake in the earthquakeArray, create an {@link Earthquake} object
             for (int i = 0; i < earthquakeArray.length(); i++) {
+
+                // Get a single earthquake at position i within the list of earthquakes
                 JSONObject currentEarthquake = earthquakeArray.getJSONObject(i);
-                // For each (i) Object in the Array, get the value for the KEY "properties, which
-                // is an object
+
+                // For a given earthquake, extract the JSONObject associated with the
+                // key called "properties", which represents a list of all properties
+                // for that earthquake.
                 JSONObject properties = currentEarthquake.getJSONObject("properties");
 
-                // Inside of the "properties" tree, get the values for magnitude, location,
-                // time, and url
+                // Extract the value for the key called "mag"
                 double magnitude = properties.getDouble("mag");
+
+                // Extract the value for the key called "place"
                 String location = properties.getString("place");
+
+                // Extract the value for the key called "time"
                 long time = properties.getLong("time");
+
+                // Extract the value for the key called "url"
                 String url = properties.getString("url");
 
-                // Create/Fill Earthquake array with received data from above getter methods to
-                // make a list of earthquakes
+                // Create a new {@link Earthquake} object with the magnitude, location, time,
+                // and url from the JSON response.
                 Earthquake earthquake = new Earthquake(magnitude, location, time, url);
+
+                // Add the new {@link Earthquake} to the list of earthquakes.
                 earthquakes.add(earthquake);
             }
-
 
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
