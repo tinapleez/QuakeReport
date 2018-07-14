@@ -1,5 +1,7 @@
 package com.example.android.quakereport;
 
+/* File created by Tina Taylor July 2018*/
+
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;

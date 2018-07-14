@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ /* File modified by Tina Taylor July 2018*/
 
 package com.example.android.quakereport;
 
@@ -37,7 +38,7 @@ public class EarthquakeActivity extends AppCompatActivity {
      */
     private static final String USGS_REQUEST_URL =
             "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag" +
-                    "=6&limit=10";
+                    "=5&limit=20";
 
     /**
      * Adapter for the list of earthquakes
