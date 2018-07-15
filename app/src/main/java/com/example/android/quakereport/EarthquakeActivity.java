@@ -23,6 +23,7 @@ import android.content.Loader;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -59,6 +60,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(LOG_TAG, "TEST: EarthquakeActivity onCreate() called ...");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
@@ -100,17 +103,20 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         // Initialize the loader. Pass in the int ID constant defined above and pass in null for
         // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
         // because this activity implements the LoaderCallbacks interface).
+        Log.i(LOG_TAG, "TEST: initLoader() called ...");
         loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
     }
 
     @Override
     public Loader<List<Earthquake>> onCreateLoader(int i, Bundle bundle) {
+        Log.i(LOG_TAG, "TEST: onCreateLoader() called ...");
         // Create a new loader for the given URL
         return new EarthquakeLoader(this, USGS_REQUEST_URL);
     }
 
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> earthquakes) {
+        Log.i(LOG_TAG, "TEST: onLoadFinished() called ...");
 
         // Set empty state text to display "No earthquakes found."
         mEmptyStateTextView.setText(R.string.no_earthquakes);
@@ -127,6 +133,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public void onLoaderReset(Loader<List<Earthquake>> loader) {
+        Log.i(LOG_TAG, "TEST: onLoaderReset() called ...");
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
     }
