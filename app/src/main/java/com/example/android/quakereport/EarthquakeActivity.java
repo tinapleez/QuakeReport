@@ -36,6 +36,8 @@ import java.util.List;
 public class EarthquakeActivity extends AppCompatActivity implements LoaderManager
         .LoaderCallbacks<List<Earthquake>> {
 
+    public static ProgressBar progressBar;
+
     /**
      * TextView that is displayed when the list is empty
      */
@@ -65,6 +67,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
+
+        progressBar = findViewById(R.id.loading_spinner);
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = findViewById(R.id.list);
@@ -120,8 +124,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         Log.i(LOG_TAG, "TEST: onLoadFinished() called ...");
 
         // Hide Progress Loading Indicator
-        ProgressBar progressBar = findViewById(R.id.loading_spinner);
-        progressBar.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.GONE);
 
         // Set empty state text to display "No earthquakes found."
         mEmptyStateTextView.setText(R.string.no_earthquakes);

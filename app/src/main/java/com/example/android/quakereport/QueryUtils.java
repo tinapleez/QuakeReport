@@ -4,6 +4,7 @@ package com.example.android.quakereport;
 
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -164,6 +165,13 @@ public final class QueryUtils {
      */
     public static List<Earthquake> fetchEarthquakeData(String requestUrl) {
         Log.i(LOG_TAG, "TEST: fetchEarthquakeData() called ...");
+
+        // Just for fun simulate a slow network response by sleeping for 5 seconds
+        //try {
+        //   Thread.sleep(5000);
+        //} catch (InterruptedException e) {
+        //   e.printStackTrace();
+        //}
 
         // Create URL object
         URL url = createUrl(requestUrl);
