@@ -18,12 +18,12 @@
 package com.example.android.quakereport;
 
 import android.app.LoaderManager;
-import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -145,6 +145,12 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
                 getString(R.string.settings_min_magnitude_key),
                 getString(R.string.settings_min_magnitude_default));
 
+        // get the Order By values, either Magnitude or Most Recent
+        String orderBy = sharedPrefs.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default)
+        );
+
         // parse breaks apart the URI string that's passed into its parameter
         Uri baseUri = Uri.parse(USGS_REQUEST_URL);
 
@@ -155,7 +161,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         uriBuilder.appendQueryParameter("format", "geojson");
         uriBuilder.appendQueryParameter("limit", "10");
         uriBuilder.appendQueryParameter("minmag", minMagnitude);
-        uriBuilder.appendQueryParameter("orderby", "time");
+        uriBuilder.appendQueryParameter("orderby", "orderBy");
 
         // Return the completed uri `http://earthquake.usgs
         // .gov/fdsnws/event/1/query?format=geojson&limit=10&minmag=minMagnitude&orderby=time
