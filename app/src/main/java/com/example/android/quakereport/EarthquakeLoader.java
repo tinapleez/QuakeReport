@@ -4,11 +4,9 @@ package com.example.android.quakereport;
  * Created by Tina Taylor on 7/15/18.
  */
 
-import android.app.Activity;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
 
 import java.util.List;
 
@@ -37,6 +35,7 @@ public class EarthquakeLoader extends AsyncTaskLoader<List<Earthquake>> {
     public EarthquakeLoader(Context context, String url) {
         super(context);
         mUrl = url;
+        Log.i("EarthquakeLoader", "The Built URL is: " + mUrl);
     }
 
     @Override
