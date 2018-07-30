@@ -1,10 +1,18 @@
 Quake Report App
 ===================================
 
+Modified in July 2018 by Tina Taylor
+
+![Animated GIF of Quake Report App](https://user-images.githubusercontent.com/35104977/43401717-e4b8d774-93de-11e8-9353-f880c6720810.gif "Animated GIF of Quake Report App")
+
+
 This app displays a list of recent earthquakes in the world
 from the U.S. Geological Survey (USGS) organization.
 
 Used in a Udacity course in the Beginning Android Nanodegree.
+
+
+
 
 More info on the USGS com.example.android.quakereport.Earthquake API available at:
 https://earthquake.usgs.gov/fdsnws/event/1/
